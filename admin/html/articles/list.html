@@ -1,0 +1,66 @@
+<div class="admin-wrapper" ng-show="editState">
+	
+	<form id="articleEdit">		
+		<div class="row">
+			<a class="btn addbtn save" ng-click="closeEdit(true)">Сохранить</a><a class="btn addbtn save" ng-click="closeEdit()">Отмена</a>
+		</div>
+		<div class="row">
+			<label>Заголовок:</label> <input class="title" ng-model="newarticle.data.title">
+		</div>
+		<div class="row">
+			<label>Картинка - превью:</label> <input type="file" ng-file-select ng-model="mainpic" ng-change="minepicUpload()" class="upldbtn-holder">
+			<img class="article-mainpic" ng-src="{{newarticle.data.mainpic}}"/>
+		</div>
+		<div class="row">
+			<label>Тип документа:</label> <input class="type" ng-model="newarticle.data.type"> <span>news, article, static</span>
+		</div>
+		<div class="row">
+			<label>Код статьи:</label> <input class="title" ng-model="newarticle.data.code">
+		</div>
+		<div class="row">
+			<label>Вступительный текст:</label> <textarea class="short-text" ng-model="newarticle.data.short_text"></textarea>
+		</div>
+		<div class="row">
+			<textarea class="editor"></textarea>
+		</div>
+		<div class="row">
+			<label>Картинки для вставки:</label> <input type="file" ng-file-select ng-model="insertpic" ng-change="insertpicUpload()" class="upldbtn-holder">
+			<ul>
+				<li class="article-pic" ng-repeat="pic in newarticle.data.pics" ng-click="insertPicToDoc(pic)"><img  ng-src="{{pic}}"/></li>
+			</ul>
+		</div>
+		<div class="row">
+			<a class="btn save addbtn" ng-click="closeEdit(true)">Сохранить</a><a class="btn save addbtn" ng-click="closeEdit()">Отмена</a>
+		</div>
+	</form>
+</div>
+<div class="admin-wrapper" ng-show="!editState">
+	<a class="addbtn" ng-click="addArticle()">Добавить</a>
+	<div class="delimiter">Статьи</div>
+	<div class="articles-list">
+		<ul class="a-list">
+			<li class="a-item" ng-repeat="article in articles.articles" ng-click="editArticle($event)">
+				<span class="label login">Title: <span class="" ng-bind="article.data.title"></span></span>
+				<span class="label login removebtn" ng-click="removeArticle($event)">Х</span>
+			</li>
+		</ul>
+	</div>
+	<div class="delimiter">Новости</div>
+	<div class="articles-list">
+		<ul class="a-list">
+			<li class="a-item" ng-repeat="article in articles.news" ng-click="editArticle($event)">
+				<span class="label login">Title: <span class="" ng-bind="article.data.title"></span></span>
+				<span class="label login removebtn" ng-click="removeArticle($event)">Х</span>
+			</li>
+		</ul>
+	</div>
+	<div class="delimiter">Статика</div>
+	<div class="articles-list">
+		<ul class="a-list">
+			<li class="a-item" ng-repeat="article in articles.statics" ng-click="editArticle($event)">
+				<span class="label login">Title: <span class="" ng-bind="article.data.title"></span></span>
+				<span class="label login removebtn" ng-click="removeArticle($event)">Х</span>
+			</li>
+		</ul>
+	</div>
+</div> 

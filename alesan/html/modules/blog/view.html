@@ -1,0 +1,16 @@
+<section class="blog">
+	<ul class="list">
+		<li>
+			<img ng-src="{{post.img}}" class="title">
+			<h1 ng-bind="post.title"></h1><br>
+			<span class="date" ng-bind="post.created.formatted"></span>
+			<div ng-bind-html="post.html()"></div>
+		</li>
+	</ul>
+<!--	<ul class="paginate">
+		<li ng-repeat="page in blog.pages" 
+				ng-if="page.show" ng-class="page.current?'current':'linked'">
+			<a ng-bind="page.num" ng-href="{{page.current?'':page.link}}"></a>
+		</li>
+	</ul>-->
+</section>

@@ -1,0 +1,42 @@
+<div class="admin-wrapper" ng-show="editState">
+	<form id="editForm">
+		<div class="row">
+			<label>Заголовок:</label>
+			<input class="title" ng-model="post._.title">
+		</div>
+		<div class="row">
+			<label>Картинка - превью:</label>
+			<input type="file" ng-file-select ng-model="mainpic" ng-change="minepicUpload()">
+			<img class="mainpic" ng-src="{{post._.img}}" />
+		</div>
+		<div class="row">
+			<textarea class="editor"></textarea>
+		</div>
+		<div class="row">
+			<label>Картинки для вставки:</label>
+			<input type="file" ng-file-select ng-model="insertpic" ng-change="insertpicUpload()">
+			<ul>
+				<li ng-repeat="pic in pics" ng-click="insertPicToPost(pic)"><img ng-src="{{pic}}" />
+				</li>
+			</ul>
+		</div>
+		<div class="row">
+			<a class="btn save" ng-click="save()">Сохранить</a><a class="btn save" ng-click="cancel()">Отмена</a>
+		</div>
+	</form>
+</div>
+<div class="admin-wrapper" ng-show="!editState">
+	<a ng-click="edit()">Добавить</a>
+	<div class="user-list">
+		<ul class="u-list">
+			<li class="u-item" ng-repeat="post in blog.viewport" ng-click="edit(post)">
+				<span class="label login">Title: <span class="" ng-bind="post.title"></span></span>
+				<span class="label login" ng-click="remove($event)">Х</span>
+			</li>
+		</ul>
+		<div class="clear"></div>
+		<ul class="paginator">
+			<li ng-repeat="page in blog.pages" ng-if="page.show" ng-class="page.current?'current':''"><a ng-bind="page.num" ng-href="{{page.current?'':link(page.num)}}"></a></li>
+		</ul>
+	</div>
+</div>

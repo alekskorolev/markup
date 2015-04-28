@@ -1,0 +1,10 @@
+<div class="user-widget">
+            <h1>ВХОД В АДМИНКУ</h1>
+            <form>
+                <input class="email" type="text" ng-model="login.login" placeholder="EMAIL">
+                <input class="password" type="password" ng-model="login.password" placeholder="ПАРОЛЬ">
+								<span class="error-msg" ng-bind="login.error"></span>
+                <button class="user-btn" type="submit" ng-click="startLogin()">ВОЙТИ</button>
+            </form>
+            <div class="not-reg-block">ЕЩЕ НЕ ЗАРЕГИСТРИРОВАНЫ? <a href="/" class="reg-link"> РЕГИСТРАЦИЯ</a></div>
+</div>

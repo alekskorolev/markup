@@ -1,0 +1,8 @@
+	<form class="source">
+		<input class="name" type="text" ng-model="fb._.name" placeholder="Your name">
+		<input class="contact" type="text" ng-model="fb._.contact" placeholder="Сommunication method">
+		<textarea class="msg" ng-model="fb._.msg" placeholder="Message"></textarea>
+		<span class="error-msg" ng-bind="error" ng-show="error"></span>
+		<span class="success-msg" ng-bind="success" ng-show="success"></span>
+		<button class="user-btn" type="submit" ng-click="save()">Send</button>
+	</form>

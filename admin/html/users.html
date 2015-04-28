@@ -1,0 +1,16 @@
+<div class="admin-wrapper">
+	<section class="admin-panel">
+		<div class="user-list">
+			<ul class="u-list">
+				<li class="u-item" ng-repeat="user in users.list"><a ng-href="{{'#/users/'+user.profile.id}}">
+					<!--<span class="label id">ID: <span class="" ng-bind="user.profile.id"></span></span>-->
+					<span class="label login"><span class="" ng-bind="user.profile.login"></span></span>
+					<span class="label roles">Roles:<ul>
+						<li ng-repeat="role in user.profile.roles" ng-bind="role"></li>
+					</ul></span>
+					<!--<span class="label a-code">Activation: <span ng-bind="user.profile.activate"></span></span>-->
+				</a></li>
+			</ul>
+		</div>
+	</section>
+</div>   

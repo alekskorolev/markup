@@ -1,0 +1,48 @@
+<div class="admin-wrapper">
+	<popup-snippet class="menu-edit-popup" popup-id="menu-edit-popup" popup-btns='{"close":{"action":"default","caption":""}}'>
+		<form id="menuEdit">
+			<div class="row title">
+				<label>Название меню</label> <input class="title" ng-model="editmenu.data.title">
+			</div>
+			<div class="row code">
+				<label>Код для вставки</label> <input class="title" ng-model="editmenu.data.id">
+			</div>
+			<div class="row descript">
+				<label>Описание:</label> <textarea class="short-text" ng-model="editmenu.data.description"></textarea>
+			</div>
+			<div class="row">
+				<ul class="mi-list">
+					<li ng-click="editmenu.newItem()">Добавить</li>
+					<li>
+						<span class="title">Заголовок</span>
+						<span class="order">Порядок</span>
+						<span class="access">Доступ</span>
+						<span class="link">Ссылка</span>
+					</li>
+					<li ng-repeat="item in editmenu.data.menuitems">
+						<input class="title" type="text" placeholder="title" ng-model="item.title">
+						<a class="remove fa fa-times" ng-click="editmenu.removeItem(item)"></a>
+						<input class="order" type="text" placeholder="order" ng-model="item.order">
+						<input class="access" type="text" placeholder="roles" ng-model="item.roles">
+						<input class="link" type="text" placeholder="link" ng-model="item.link">
+					</li>
+				</ul>
+			</div>
+			<div class="row">
+				<a class="btn save" ng-click="saveMenu()">Сохранить</a>
+			</div>
+		</form>
+	</popup-snippet>
+	
+	<div class="menu-list">
+			<ul class="m-list">
+				<li ng-click="addMenu()" class="fa fa-plus" title="Добавить меню"></li>
+				<li class="m-item" ng-repeat="menu in menuList.list" ng-click="editMenu($event)">
+					<span class="label title"><span ng-bind="menu.data.title"></span><span class="label remove fa fa-times" ng-click="removeMenu($event)"></span></span>
+					<span class="label id"><a ng-click="copyCode($event)" title="скопировать код для вставки"><span class="fa fa-files-o"></span><span  ng-bind="menu.data.id"></span></a></span>
+					<span class="label descr" ng-bind="menu.data.description"></span>
+					
+				</li>
+			</ul>
+		</div>
+</div> 
